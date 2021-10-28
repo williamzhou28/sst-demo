@@ -1,0 +1,5 @@
+{
+  "name": "spa-sst-demo",
+  "region": "eu-west-2",
+  "main": "stacks/index.ts"
+}

@@ -1,0 +1,39 @@
+enum TicketMode {
+  METRO,
+  BUS,
+  ALL
+}
+
+type TicketType {
+  code: String
+  name: String
+  description: String!
+  cost: Number
+  expires: Number
+  appliesTo: TicketMode
+}
+
+type Ticket {
+  accountId: String
+  ticketId: String
+  ticketType: TicketType
+  startDate: String
+  endDate: String!
+  cost: Number
+  createdAt: Number
+}
+
+input TicketInput {
+  accountId: String
+  ticketType: TicketType
+  startDate: String
+}
+
+extend type Query {
+  getTickets(accountId: String): [Ticket]
+  getTicket(accountId: String, ticketId: String): Ticket
+}
+
+extend type Mutation {
+  purchase(request: TicketInput): Ticket
+}
